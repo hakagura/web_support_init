@@ -1,0 +1,44 @@
+<% if flash[:alert] %>
+	<div class="span12 columns">
+      <div class="alert-message warning">
+        <p><%= flash[:alert] %></p>
+     </div>
+	<% end %>
+	<% if flash[:notice] %>
+	<div class="span12 columns">
+      <div class="alert-message success">
+        <p><%= flash[:notice] %></p>
+     </div>
+<% end %>
+
+<div class="page-header">
+  <h1><%= @issue.name %> <small>assigned to <strong><%= @issue.assigned %></strong> on <strong><%= l @issue.created_at, :format => :short %></strong>.</small></h1>
+</div>
+
+<div class="row">
+    <div class="span4 columns">
+      <h2>Issue #<%= @issue.id %> <small class="<%= @issue.status %>"><%= @issue.status %></small></h2>
+	  <div class="priority <%= @issue.priority %>">Priority is <%= @issue.priority %></div>
+    </div>
+
+	<div class="span12 columns">
+	      <h4>Issue</h4>
+		  <%= @issue.status %>
+		  <%= @issue.priority %>
+		  <%= @issue.commit %>
+		  <%= @issue.url %>
+		  <%= @issue.created_at %>
+		  <%= @issue.updated_at %>
+    </div>
+	<div class="span12 columns issue-description">
+	      <h4>Description of Issue</h4>
+		  <%= @issue.description %>
+	</div>
+  </div><!-- /row -->
+
+
+  
+
+
+<%= link_to 'Edit', edit_issue_path(@issue), :class => 'btn info' %>
+<%= link_to 'Back', issues_path, :class => 'btn default' %>
