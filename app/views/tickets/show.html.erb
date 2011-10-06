@@ -37,15 +37,18 @@
 	</div>
 
   <h2>Add a comment:</h2>
-        <%= form_for([@ticket, @ticket.comments.build]) do |f| %>
-          <div class="field">
-            <%= f.label :description %><br />
-            <%= f.text_area :description %>
-          </div>
-          <div class="actions">
-            <%= f.submit %>
-          </div>
-        <% end %>
+  <%= form_for([@ticket, @ticket.comments.build]) do |f| %>
+    <div class="clearfix">
+      
+     <label>Description</label>
+      <div class="input"><%= f.text_area :description, :rows => 3%></div>
+    </div>
+      
+    </p>
+    <div class="actions">
+        <%= f.submit 'Add Comment', :class => 'btn primary' %>
+    </div>
+  <% end %>
 
   </div><!-- /row -->
 
