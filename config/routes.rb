@@ -1,5 +1,9 @@
 SupportSystem::Application.routes.draw do
-  resources :tickets
+  resources :comments
+
+  resources :tickets do
+    resources :comments
+  end
 
   root :to => "tickets#index"
   # The priority is based upon order of creation:

@@ -31,13 +31,22 @@
   <div class="span12 columns ticket-description">
 	      <h4>Descrição do ticket</h4>
         <p><%= @ticket.description%></p>
-
-        <div class="span12 columns ticket-description">
-	      <h4>Ticket</h4>
-        <p><%= @ticket.description%></p>
-	</div>
+        <h2>Comments</h2>
+          <%= render @ticket.comments %>
 
 	</div>
+
+  <h2>Add a comment:</h2>
+        <%= form_for([@ticket, @ticket.comments.build]) do |f| %>
+          <div class="field">
+            <%= f.label :description %><br />
+            <%= f.text_area :description %>
+          </div>
+          <div class="actions">
+            <%= f.submit %>
+          </div>
+        <% end %>
+
   </div><!-- /row -->
 
 
