@@ -28,9 +28,15 @@
 		  <%= @ticket.created_at %>
 		  <%= @ticket.updated_at %>
     </div>
-	<div class="span12 columns ticket-description">
+  <div class="span12 columns ticket-description">
 	      <h4>Descrição do ticket</h4>
-		  <%= @ticket.description %>
+        <p><%= @ticket.description%></p>
+
+        <div class="span12 columns ticket-description">
+	      <h4>Ticket</h4>
+        <p><%= @ticket.description%></p>
+	</div>
+
 	</div>
   </div><!-- /row -->
 

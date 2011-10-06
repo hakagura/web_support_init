@@ -39,9 +39,9 @@
     <td><%= ticket.assigned %></td>
     <td><span class="<%= ticket.status %>"><%= ticket.status %></span></td>
 	<td></td>
-    <td><%= link_to 'Show', ticket, :class => 'btn' %>
-    <%= link_to 'Edit', edit_ticket_path(ticket), :class => 'btn' %>
-    <%= link_to 'Destroy', ticket, :confirm => 'Você tem certeza?', :method => :delete, :class => 'btn danger' %></td>
+    <td><%= link_to 'Ver', ticket, :class => 'btn' %>
+    <%= link_to 'Editar', edit_ticket_path(ticket), :class => 'btn' %>
+    <%= link_to 'Apagar', ticket, :confirm => 'Você tem certeza?', :method => :delete, :class => 'btn danger' %></td>
   </tr>
 <% end %>
 </table>
