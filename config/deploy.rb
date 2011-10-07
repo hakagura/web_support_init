@@ -63,9 +63,9 @@ task :create_database_config do
 production:
   adapter: sqlite3
   database: db/database.sqlite3
- pool: 5
+  pool: 5
   timeout: 5000
-  EOF
+EOF
   run "mkdir -p #{shared_path}/config"
   put configs, "#{shared_path}/config/database.yml"
 end
