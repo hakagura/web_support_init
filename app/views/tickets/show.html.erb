@@ -28,6 +28,7 @@
 		  <%= @ticket.created_at %>
 		  <%= @ticket.updated_at %>
     </div>
+
   <div class="span12 columns ticket-description">
 	      <h4>Descrição do ticket</h4>
         <p><%= @ticket.description%></p>
@@ -35,6 +36,7 @@
           <%= render @ticket.comments %>
 
 	</div>
+
   <% if @ticket.status != "Closed"%>
   <h2>Comentários:</h2>
   <%= form_for([@ticket, @ticket.comments.build]) do |f| %>
