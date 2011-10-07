@@ -31,22 +31,22 @@
   <div class="span12 columns ticket-description">
 	      <h4>Descrição do ticket</h4>
         <p><%= @ticket.description%></p>
-        <h2>Comments</h2>
+        <h2>Comentários</h2>
           <%= render @ticket.comments %>
 
 	</div>
   <% if @ticket.status != "Closed"%>
-  <h2>Add a comment:</h2>
+  <h2>Comentários:</h2>
   <%= form_for([@ticket, @ticket.comments.build]) do |f| %>
     <div class="clearfix">
       
-     <label>Description</label>
+     <label>Descrição</label>
       <div class="input"><%= f.text_area :description, :rows => 3%></div>
     </div>
       
     </p>
     <div class="actions">
-        <%= f.submit 'Add Comment', :class => 'btn primary' %>
+        <%= f.submit 'Adicionar', :class => 'btn primary' %>
     </div>
   <% end %>
 <%end%>
