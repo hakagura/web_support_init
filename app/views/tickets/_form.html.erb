@@ -1,50 +1,50 @@
 <%= form_for(@ticket, :html => { :class => ""} ) do |f| %>
 
-<% if flash[:alert] %>
+  <% if flash[:alert] %>
     <p class="flash-error"><%= flash[:alert] %></p>
   <% end %>
   <% if flash[:notice] %>
     <p class="flash-notice"><%= flash[:notice] %></p>
-<% end %>
+  <% end %>
 
-<fieldset>
-<legend>Abrindo um Ticket</legend>
+  <fieldset>
+    <legend>Abrindo um Ticket</legend>
 
- <div class="clearfix">
- <label>Sumário do Ticket</label>
- <div class="input"><%= f.text_field :summary %></div>
- </div>
+    <div class="clearfix">
+      <label>Sumário do Ticket:</label>
+      <div class="input"><%= f.text_field :summary %></div>
+    </div>
 
- <div class="clearfix">
- <label>Prioridade</label>
- <div class="input"><%= f.select :priority, options_for_select(["Select One", "Low", "Medium", "High", "Emergency", "World has ended."],:disabled => ["Select One"]) %></div>
- </div>
+    <div class="clearfix">
+      <label>Prioridade</label>
+      <div class="input"><%= f.select :priority, options_for_select(["Select One", "Low", "Medium", "High", "Emergency", "World has ended."],:disabled => ["Select One"]) %></div>
+    </div>
 
- <div class="clearfix">
- <label>Assinado:</label>
- <div class="input"><%= f.text_field :assigned %></div>
- </div>
+    <div class="clearfix">
+      <label>Assinado:</label>
+      <div class="input"><%= f.text_field :assigned %></div>
+    </div>
 
-<div class="clearfix">
- <label>Status</label>
- <div class="input"><%= f.select :status, options_for_select(["Select One", "Open", "Ongoing", "Closed", "Outsourced"],:disabled => ["Select One"]) %></div>
- </div>
-</fieldset>
+    <!-- <div class="clearfix">
+      <label>Status</label>
+      <div class="input"><%#= f.select :status, options_for_select(["Select One", "Open", "Ongoing", "Closed", "Outsourced"],:disabled => ["Select One"]) %></div>
+    </div>-->
+  </fieldset>
 
-<fieldset>
-<legend>Detalhes do Ticket</legend>
+  <fieldset>
+    <legend>Detalhes do Ticket:</legend>
 
-<div class="clearfix">
-<label>Detalhes do Ticket</label>
-<div class="input"><%= f.text_area :description,:class=>"xxlarge" %></div>
-</div>
+    <div class="clearfix">
+      <label>Providências a serem tomadas</label>
+      <div class="input"><%= f.text_area :description,:class=>"xxlarge" %></div>
+    </div>
 
 
-</fieldset>
-<div class="actions">
-  <%= f.submit 'Criar', :class => 'btn primary' %>
-	<%= link_to 'Voltar', tickets_path, :class => 'btn' %>
-</div>
+  </fieldset>
+  <div class="actions">
+    <%= f.submit 'Criar', :class => 'btn primary' %>
+    <%= link_to 'Voltar', tickets_path, :class => 'btn' %>
+  </div>
 </div>
 
 <% end %>
