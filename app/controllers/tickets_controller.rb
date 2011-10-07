@@ -29,6 +29,7 @@ class TicketsController < ApplicationController
 
   def create
     @ticket = Ticket.new(params[:ticket])
+    @ticket.status="Open"
 
     respond_to do |format|
       if @ticket.save
