@@ -4,6 +4,8 @@ class MessagesController < ApplicationController
   def create
     @ticket = Ticket.find(params[:ticket_id])
     @message = @ticket.messages.create!(params[:message])
+    #@message = Message.create!(params[:message])
+    #@message = Message.create!(params[:message])
   end
 
 end
