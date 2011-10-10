@@ -7,6 +7,7 @@ gem 'rails', '3.0.9'
 gem 'cancan'
 gem 'jquery-rails', '>= 1.0.12'
 gem 'faye'
+gem 'ckeditor'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
