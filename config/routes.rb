@@ -1,8 +1,15 @@
 SupportSystem::Application.routes.draw do
-  resources :comments
+  resources :messages
 
+  devise_for :users, :path_names => { :sign_up => "mineiros" }
+
+  devise_scope :user do
+    get '/login' => 'devise/sessions#new'
+    get '/logout' => 'devise/sessions#destroy'
+  end
+  
   resources :tickets do
-    resources :comments
+    resources :messages
   end
 
   root :to => "tickets#index"

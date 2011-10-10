@@ -12,48 +12,50 @@
 <% end %>
 
 <div class="page-header">
-  <h1><%= @ticket.summary %> <small>aberto por <strong><%= @ticket.assigned %></strong> em <strong><%= l @ticket.created_at, :format => :short %></strong>.</small></h1>
+  <h1><%= @ticket.summary %> <small>aberto por <strong><%= @ticket.user.email %> <strong><%= l @ticket.created_at %></strong></small></h1>
 </div>
 
 <div class="row">
     <div class="span4 columns">
-      <h2>Ticket #<%= @ticket.id %> <small class="<%= @ticket.status %>"><%= @ticket.status %></small></h2>
+      <h2>Ticket #<%= @ticket.id %> <small class="<%= @ticket.status %>"><%= transl @ticket.status %></small></h2>
 	  <div class="priority <%= @ticket.priority %>">Prioridade é <%= @ticket.priority %></div>
     </div>
 
 	<div class="span12 columns">
-	      <h4>Ticket</h4>
-		  <%= @ticket.status %>
-		  <%= @ticket.priority %>
-		  <%= @ticket.created_at %>
-		  <%= @ticket.updated_at %>
+	      <h4>Ultima atualização:</h4>
+		  <%=l @ticket.updated_at %>
     </div>
 
   <div class="span12 columns ticket-description">
 	      <h4>Descrição do ticket</h4>
-        <p><%= @ticket.description%></p>
-        <h2>Comentários</h2>
-          <%= render @ticket.comments %>
-
+        <p><%= @ticket.description.gsub(/\n/,"<br />").html_safe %></p>
+        <h4>Comentários</h4>
+        <ul id = "chat" >
+          <%= render @ticket.messages %>
+        </ul>
 	</div>
 
-  <% if @ticket.status != "Closed"%>
-  <h2>Comentários:</h2>
-  <%= form_for([@ticket, @ticket.comments.build]) do |f| %>
-    <div class="clearfix">
-      
-     <label>Descrição</label>
-      <div class="input"><%= f.text_area :description, :rows => 3%></div>
-    </div>
-      
-    </p>
-    <div class="actions">
-        <%= f.submit 'Adicionar', :class => 'btn primary' %>
-    </div>
+<% unless @ticket.status == "Closed" %>
+  <h4>Adicionar Comentário:</h4>
+  <%= form_for([@ticket, @ticket.messages.build], :remote => true) do |f| %>
+          <div class="clearfix">
+            <%= f.hidden_field :user_id, :value => current_user.id %>
+           <label>Comentário</label>
+            <div class="input"><%= f.text_area :content, :rows => 3%></div>
+          </div>
+          <div class="actions">
+              <%= f.submit 'Adicionar', :class => 'btn primary' %>
+          </div>
   <% end %>
 <%end%>
-  </div><!-- /row -->
 
+</div><!-- /row -->
 
 <%= link_to 'Editar', edit_ticket_path(@ticket), :class => 'btn info' %>
 <%= link_to 'Voltar', tickets_path, :class => 'btn default' %>
+
+<script type="text/javascript">
+  window.onload = function(){
+      var intervalo = setInterval("document.getElementById('chat').scrollTop = 1000000;", 500);
+  }
+</script>

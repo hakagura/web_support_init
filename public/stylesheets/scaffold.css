@@ -62,3 +62,26 @@ div.priority {margin-top: 5px; padding: 5px; border-top: 1px solid gray; border-
 .Closed {background-color: red;}
 
 span.Open, span.Closed, span.Ongoing, span.Outsourced {float: none; margin-top: 0; font-size: smaller; font-weight: normal}
+
+ul#chat {
+  list-style: none;
+  padding: 0;
+  width: 700px;
+  height: 200px;
+  border: solid 1px #777;
+  margin: 5px 0;
+  overflow: auto;
+}
+
+ul#chat li {
+  margin: 2px 5px;
+  padding: 0;
+}
+
+ul#chat li .created_at {
+  float: right;
+  color: #777;
+  font-size: 11px;
+  padding-left: 4px;
+  padding-top: 2px;
+}

@@ -1,4 +1,6 @@
 class TicketsController < ApplicationController
+  before_filter :authenticate_user!
+  load_and_authorize_resource
   def index
     @tickets = Ticket.all
 
@@ -29,7 +31,7 @@ class TicketsController < ApplicationController
 
   def create
     @ticket = Ticket.new(params[:ticket])
-    @ticket.status="Open"
+    @ticket.user = current_user
 
     respond_to do |format|
       if @ticket.save

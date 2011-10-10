@@ -13,3 +13,5 @@ Should be as simple as:
 
 Basic screenshot of v0.01 - http://cl.ly/0i1W1o463d2T2s0S2n0c
 See the project on OpenSourceRails - http://www.opensourcerails.com/projects/1219230-Support-System
+
+rackup faye.ru -s thin -E production

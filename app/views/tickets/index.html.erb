@@ -36,8 +36,8 @@
   <tr class="<%= ticket.priority %>">
     <td><%= ticket.summary %></td>
     <td><%= ticket.priority %></td>
-    <td><%= ticket.assigned %></td>
-    <td><span class="<%= ticket.status %>"><%= ticket.status %></span></td>
+    <td><%= ticket.user.email %></td>
+    <td><span class="<%= ticket.status %>"><%=transl ticket.status %></span></td>
 	<td></td>
     <td><%= link_to 'Ver', ticket, :class => 'btn' %>
     <%= link_to 'Editar', edit_ticket_path(ticket), :class => 'btn' %>
