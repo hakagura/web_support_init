@@ -31,24 +31,20 @@
     </div>
 
   <div class="span12 columns ticket-description">
-	      <h4>Descrição do ticket</h4>
+	      <h4>Descrição do ticket:</h4>
         <p><%= @ticket.description.gsub(/\n/,"<br />").html_safe %></p>
-        <h4>Comentários</h4>
-        <ul>
-          <%= render @ticket.messages %>
-        </ul>
-	</div>
+        <h4>Acompanhamento:</h4>
+        <%= render @ticket.messages %><br />
 
+</div>
 <% unless @ticket.status == "Closed" %>
-  <h4>Adicionar Comentário:</h4>
-  <%= form_for([@ticket, @ticket.messages.build], :remote => true) do |f| %>
-          <div class="clearfix">
+  <%= form_for([@ticket, @ticket.messages.build]) do |f| %>
+          <div "clearfix">
             <%= f.hidden_field :user_id, :value => current_user.id %>
-           <label>Comentário</label>
-            <div class="input"><%= f.text_area :content, :rows => 3%></div>
+            <div class="input"><%= f.text_area :content,:rows => 20,:style => "width:500px !important;"%></div>
           </div>
           <div class="actions">
-              <%= f.submit 'Adicionar', :class => 'btn primary' %>
+              <%= f.submit 'Adicionar', :class => 'btn large primary' %>
           </div>
   <% end %>
 <%end%>
