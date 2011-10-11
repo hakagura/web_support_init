@@ -34,7 +34,15 @@ namespace :deploy do
   task :symlink_images do
     run "ln -nfs #{shared_path}/images/system #{release_path}/public/system" 
   end
+
+  desc "Populates the Production Database"
+  task :seed do
+    puts "\n\n=== Populating the Production Database! ===\n\n"
+    run "cd #{current_path}; rake db:seed RAILS_ENV=production"
+  end
 end
+
+
 
 namespace :unicorn do
   task :start, :roles => :app, :except => { :no_release => true} do

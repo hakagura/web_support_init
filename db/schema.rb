@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(:version => 20111010164736) do
 
   add_index "ckeditor_assets", ["assetable_type", "assetable_id"], :name => "idx_ckeditor_assetable"
   add_index "ckeditor_assets", ["assetable_type", "type", "assetable_id"], :name => "idx_ckeditor_assetable_type"
+ActiveRecord::Schema.define(:version => 20111009030349) do
 
   create_table "messages", :force => true do |t|
     t.text     "content"
