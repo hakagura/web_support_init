@@ -4,6 +4,7 @@ class Ticket < ActiveRecord::Base
 	belongs_to :user
 	validates_presence_of :summary, :description, :priority
 	validates_uniqueness_of :summary
+  mount_uploader :image, ImageUploader
 	
 	#def to_param
 	#	slug
