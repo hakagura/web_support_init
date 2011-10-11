@@ -19,10 +19,14 @@
     <div class="span4 columns">
       <h2>Ticket #<%= @ticket.id %> <small class="<%= @ticket.status %>"><%= transl @ticket.status %></small></h2>
 	  <div class="priority <%= @ticket.priority %>">Prioridade é <%= @ticket.priority %></div>
+      <p>
+      <strong>Image:</strong>
+      <%= link_to(image_tag(@ticket.image.url(:thumb)),@ticket.image.url(:large),:class => "top_up") unless @ticket.image.nil? %>
+      </p>
     </div>
 
 	<div class="span12 columns">
-	      <h4>Ultima atualização:</h4>
+	      <h4>Última atualização:</h4>
 		  <%=l @ticket.updated_at %>
     </div>
 
@@ -30,7 +34,7 @@
 	      <h4>Descrição do ticket</h4>
         <p><%= @ticket.description.gsub(/\n/,"<br />").html_safe %></p>
         <h4>Comentários</h4>
-        <ul id = "chat" >
+        <ul>
           <%= render @ticket.messages %>
         </ul>
 	</div>
@@ -52,7 +56,7 @@
 </div><!-- /row -->
 
 <%= link_to 'Editar', edit_ticket_path(@ticket), :class => 'btn info' %>
-<%= link_to 'Voltar', tickets_path, :class => 'btn default' %>
+<%= link_to 'Voltar', tickets_path, :class => 'btn info' %>
 
 <script type="text/javascript">
   window.onload = function(){
