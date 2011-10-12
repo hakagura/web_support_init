@@ -5,6 +5,8 @@
 #
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Daley', :city => cities.first)
-puts '---------------------------- Criando usuario administrativo ----------------------------'
-User.create(:email => 'leilao@leiao.com.br', :password => 'leilao123456', :role => 'admin')
-puts '---------------------------- Usuario administrativo criado com sucesso ----------------------------'
+if User.count == 0
+  puts "Creating admin user"
+  User.create(:role=>:admin, :email=>'leilao@leilao.com.br', :password => 'leilao123456')
+end
+

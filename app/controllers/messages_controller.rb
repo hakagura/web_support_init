@@ -4,6 +4,7 @@ class MessagesController < ApplicationController
   def create
     @ticket = Ticket.find(params[:ticket_id])
     @message = @ticket.messages.create!(params[:message])
+    redirect_to @ticket
   end
 
 end
