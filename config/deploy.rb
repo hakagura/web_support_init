@@ -72,10 +72,10 @@ production:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: webtickets
+  database: websuport
   pool: 5
-  username: rt_ticket
-  password: uzSKKFsRBSe6AWr5
+  username: rt_suport
+  password: nPV5VjJZybtKq7Hr
   host: localhost
 EOF
   run "mkdir -p #{shared_path}/config"
