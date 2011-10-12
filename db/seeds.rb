@@ -7,6 +7,7 @@
 #   Mayor.create(:name => 'Daley', :city => cities.first)
 if User.count == 0
   puts "Creating admin user"
-  User.create(:role=>:admin, :email=>'leilao@leilao.com.br', :password => 'leilao123456')
+  User.create([{:role=>'admin'},{:email=>'leilao@leilao.com.br'},{:password => 'leilao123456'}])
+  User.create([{:role=>'user'},{:email=>'junior@leilao.com.br'},{:password => 'leilao'}])
 end
 
