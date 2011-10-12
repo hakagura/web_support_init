@@ -3,9 +3,7 @@
 <head>
   <title>Support System beta 0.1</title>
   <%= stylesheet_link_tag :all %>
-  <link rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/css/bootstrap-1.2.0.min.css">
-  <%= javascript_include_tag :defaults %>
-  <%= javascript_include_tag :ckeditor %>
+  <%= stylesheet_link_tag "http://twitter.github.com/bootstrap/assets/css/bootstrap-1.2.0.min.css", 'fancybox/jquery.fancybox-1.3.4.css' %>
   <%= csrf_meta_tag %>
 </head>
 <body>
@@ -25,5 +23,22 @@
 <div class="content">
 	<%= yield %>
 </div>
+
+<%= javascript_include_tag :defaults %>
+<%= javascript_include_tag :ckeditor %>
+<%= javascript_include_tag 'fancybox/jquery.mousewheel-3.0.4.pack', 'fancybox/jquery.fancybox-1.3.4.pack' %>
+<script>
+//fancybox
+$(document).ready(function() {
+  $("a.group").fancybox({
+	'autoScale'		: true,
+	'transitionIn'	: 'fade',
+	'transitionOut'	: 'fade',
+	'overlayColor'	: '#000',
+	'overlayOpacity': '0.8',
+	'centerOnScroll': true
+	})
+});
+</script>
 </body>
 </html>

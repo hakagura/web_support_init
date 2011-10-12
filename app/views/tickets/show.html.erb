@@ -21,7 +21,7 @@
 	  <div class="priority <%= @ticket.priority %>">Prioridade é <%= @ticket.priority %></div>
       <p>
       <strong>Image:</strong>
-      <%= link_to(image_tag(@ticket.image.url(:thumb)),@ticket.image.url(:large),:class => "top_up") unless @ticket.image.nil? %>
+      <%= link_to(image_tag(@ticket.image.url(:thumb)),@ticket.image.url(:large),:class => "group") unless @ticket.image.nil? %>
       </p>
     </div>
 
