@@ -3,6 +3,7 @@
 <head>
   <title>Support System beta 0.1</title>
   <%= stylesheet_link_tag :all %>
+  <%= javascript_include_tag :ckeditor %>
   <%= stylesheet_link_tag "http://twitter.github.com/bootstrap/assets/css/bootstrap-1.2.0.min.css", 'fancybox/jquery.fancybox-1.3.4.css' %>
   <%= csrf_meta_tag %>
 </head>
@@ -23,9 +24,9 @@
 <div class="content">
 	<%= yield %>
 </div>
-
+gg
 <%= javascript_include_tag :defaults %>
-<%= javascript_include_tag :ckeditor %>
+<%= javascript_include_tag 'jquery.js' %>
 <%= javascript_include_tag 'fancybox/jquery.mousewheel-3.0.4.pack', 'fancybox/jquery.fancybox-1.3.4.pack' %>
 <script>
 //fancybox

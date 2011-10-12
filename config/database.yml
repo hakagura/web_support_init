@@ -20,10 +20,10 @@ development:
   database: web_support_development
   pool: 5
   username: root
-  password: root
+  password: s4mur41
   # socket: /Applications/MAMP/tmp/mysql/mysql.sock
-  # socket: /tmp/mysql.sock
-  socket: /var/run/mysqld/mysqld.sock
+  socket: /tmp/mysql.sock
+  # socket: /var/run/mysqld/mysqld.sock
 
 test:
   adapter: mysql2
@@ -32,10 +32,10 @@ test:
   database: web_support_test
   pool: 5
   username: root
-  password: root
+  password: s4mur41
   # socket: /Applications/MAMP/tmp/mysql/mysql.sock
-  # socket: /tmp/mysql.sock
-  socket: /var/run/mysqld/mysqld.sock
+  socket: /tmp/mysql.sock
+  # socket: /var/run/mysqld/mysqld.sock
 
 production:
   adapter: mysql2
@@ -44,8 +44,8 @@ production:
   database: web_support_production
   pool: 5
   username: root
-  password: root
+  password: s4mur41
   # socket: /Applications/MAMP/tmp/mysql/mysql.sock
-  # socket: /tmp/mysql.sock
-  socket: /var/run/mysqld/mysqld.sock
+  socket: /tmp/mysql.sock
+  # socket: /var/run/mysqld/mysqld.sock
 

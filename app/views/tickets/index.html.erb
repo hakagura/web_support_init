@@ -1,52 +1,86 @@
+<%= javascript_include_tag 'jquery.js' %>
+
 <div class="page-header">
   <h1>Tickets</h1>
 </div>
 
 <% if flash[:alert] %>
-	<div class="span12 columns">
-      <div class="alert-message warning">
-        <p><%= flash[:alert] %></p>
-     </div>
-	<% end %>
-	<% if flash[:notice] %>
-	<div class="span12 columns">
+  <div class="span12 columns">
+    <div class="alert-message warning">
+      <p><%= flash[:alert] %></p>
+    </div>
+  <% end %>
+  <% if flash[:notice] %>
+    <div class="span12 columns">
       <div class="alert-message success">
         <p><%= flash[:notice] %></p>
-     </div>
-<% end %>
+      </div>
+    <% end %>
 
-<% if @tickets.empty? %>
+    <% if @tickets.empty? %>
 
-<br />
-<%= link_to 'Abrir um novo Ticket', new_ticket_path, :class => "btn primary" %>
+      <br />
+      <%= link_to 'Abrir um novo Ticket', new_ticket_path, :class => "btn primary" %>
 
-<% else %>
+    <% else %>
 
-<table class="zebra-striped">
-  <tr>
-    <th>Sumário</th>
-    <th>Prioridade</th>
-    <th>Assinado</th>
-    <th>Status</th>
-    <th></th>
-    <th></th>
-  </tr>
+      <table class="zebra-striped">
+        <tr>
+          <th>Sumário</th>
+          <th>Prioridade</th>
+          <th>Assinado</th>
+          <th>Status</th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
 
-<% @tickets.each do |ticket| %>
-  <tr class="<%= ticket.priority %>">
-    <td><%= ticket.summary %></td>
-    <td><%= ticket.priority %></td>
-    <td><%= ticket.user.email %></td>
-    <td><span class="<%= ticket.status %>"><%=transl ticket.status %></span></td>
-	<td></td>
-    <td><%= link_to 'Ver', ticket, :class => 'btn info' %>
-    <%= link_to 'Editar', edit_ticket_path(ticket), :class => 'btn info' %>
-    <%= link_to 'Apagar', ticket, :confirm => 'Você tem certeza?', :method => :delete, :class => 'btn danger' %></td>
-  </tr>
-<% end %>
-</table>
+        <% @tickets.each do |ticket| %>
+          <tr class="<%= ticket.priority %>">
+            <td><%= ticket.summary %></td>
+            <td><%= ticket.priority %></td>
+            <td><%= ticket.user.email %></td>
+            <td><span class="<%= ticket.status %>"><%=transl ticket.status %></span></td>
+            <td></td>
+            <td><%= link_to 'Ver', ticket, :class => 'btn info' %>
+              <%= link_to 'Editar', edit_ticket_path(ticket), :class => 'btn info' %>
+              <%= link_to 'Apagar', ticket, :confirm => 'Você tem certeza?', :method => :delete, :class => 'btn danger' %></td>
+            <td id="ticket_times_<%=ticket.id%>" time="<%= (Time.now.utc - ticket.created_at).to_i%>"></td>
+          </tr>
+        <% end %>
+      </table>
 
-<br />
+      <br />
 
-<%= link_to 'Novo ticket', new_ticket_path, :class => "btn primary" %>
-<% end %>
+      <%= link_to 'Novo ticket', new_ticket_path, :class => "btn primary" %>
+    <% end %>
+    <script>
+      $(document).ready(function(){setInterval(date_time(),1000)})
+      var ticket_id="<%= @ticket_id%>".split(',')
+      function date_time(){
+        for(var i in ticket_id){
+          $("#ticket_times_"+i).html(chronometer($("#ticket_times_"+i).attr("time")))
+          $("#ticket_times_"+i).attr("time",$("#ticket_times_"+i).attr("time")+1)
+        }
+      }
+
+      function chronometer(secs){
+        secs=parseInt(secs);
+        day = parseInt(secs/86400);
+        hor = parseInt((secs-(day*86400))/3600);
+        min = parseInt((secs-((day*86400)+(hor*3600)))/60);
+        seg = parseInt(secs-((day*86400)+(hor*3600)+(min*60)));
+        return (pad(day, 2)+"d "+pad(hor, 2)+"h "+pad(min, 2)+"m "+pad(seg, 2)+"s");
+
+
+      }
+
+      function pad(number, length){
+        var str = '' + number;
+        while (str.length < length){
+          str = '0' + str;
+        }
+        return str;
+      }
+
+    </script>
