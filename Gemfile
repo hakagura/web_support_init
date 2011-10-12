@@ -9,7 +9,7 @@ gem 'jquery-rails', '>= 1.0.12'
 gem 'ckeditor'
 gem 'carrierwave'
 gem 'mini_magick'
-
+gem 'mysql2', '< 0.3' #bando de dados
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
