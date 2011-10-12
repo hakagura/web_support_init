@@ -44,8 +44,9 @@
             <td></td>
             <td><%= link_to 'Ver', ticket, :class => 'btn info' %>
               <%= link_to 'Editar', edit_ticket_path(ticket), :class => 'btn info' %>
-              <%= link_to 'Apagar', ticket, :confirm => 'Você tem certeza?', :method => :delete, :class => 'btn danger' %></td>
-            <td id="ticket_times_<%=ticket.id%>" time="<%= (Time.now.utc - ticket.created_at).to_i%>"></td>
+              <%= link_to 'Apagar', ticket, :confirm => 'Você tem certeza?', :method => :delete, :class => 'btn danger' %>
+            </td>
+            <td id="ticket_times_<%=ticket.id%>" time="<%= (Time.now.utc - ticket.created_at).to_i%>">ttt</td>
           </tr>
         <% end %>
       </table>
@@ -55,12 +56,12 @@
       <%= link_to 'Novo ticket', new_ticket_path, :class => "btn primary" %>
     <% end %>
     <script>
-      $(document).ready(function(){setInterval(date_time(),1000)})
       var ticket_id="<%= @ticket_id%>".split(',')
+
       function date_time(){
         for(var i in ticket_id){
-          $("#ticket_times_"+i).html(chronometer($("#ticket_times_"+i).attr("time")))
-          $("#ticket_times_"+i).attr("time",$("#ticket_times_"+i).attr("time")+1)
+          $("#ticket_times_"+(parseInt(i+1))).html(chronometer($("#ticket_times_"+(parseInt(i+1))).attr("time")))
+          $("#ticket_times_"+(parseInt(i+1))).attr("time",parseInt($("#ticket_times_"+(parseInt(i+1))).attr("time"))+1)
         }
       }
 
@@ -82,5 +83,7 @@
         }
         return str;
       }
-
+      $(document).ready(function(){
+        setInterval("date_time()",1000)
+      })
     </script>
