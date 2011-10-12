@@ -22,8 +22,8 @@ development:
   username: root
   password: s4mur41
   # socket: /Applications/MAMP/tmp/mysql/mysql.sock
-  # socket: /tmp/mysql.sock
-  socket: /var/run/mysqld/mysqld.sock
+  socket: /tmp/mysql.sock
+  # socket: /var/run/mysqld/mysqld.sock
 
 test:
   adapter: mysql2
@@ -34,8 +34,8 @@ test:
   username: root
   password: s4mur41
   # socket: /Applications/MAMP/tmp/mysql/mysql.sock
-  # socket: /tmp/mysql.sock
-  socket: /var/run/mysqld/mysqld.sock
+  socket: /tmp/mysql.sock
+  # socket: /var/run/mysqld/mysqld.sock
 
 production:
   adapter: mysql2
@@ -46,6 +46,6 @@ production:
   username: root
   password: s4mur41
   # socket: /Applications/MAMP/tmp/mysql/mysql.sock
-  # socket: /tmp/mysql.sock
-  socket: /var/run/mysqld/mysqld.sock
+  socket: /tmp/mysql.sock
+  # socket: /var/run/mysqld/mysqld.sock
 
