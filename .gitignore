@@ -1,6 +1,6 @@
 .bundle
 db/*.sqlite3
-#config/*.yml
+config/*.yml
 log/*.log
 tmp/
 public/uploads/

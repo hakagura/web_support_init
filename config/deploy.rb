@@ -68,10 +68,14 @@ desc "Tarefa para criar as configurações do banco em produção"
 task :create_database_config do
   configs =<<-EOF
 production:
-  adapter: sqlite3
-  database: db/database.sqlite3
+  adapter: mysql2
+  encoding: utf8
+  reconnect: false
+  database: websuport
   pool: 5
-  timeout: 5000
+  username: rt_suport
+  password: nPV5VjJZybtKq7Hr
+  host: localhost
 EOF
   run "mkdir -p #{shared_path}/config"
   put configs, "#{shared_path}/config/database.yml"

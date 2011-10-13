@@ -20,6 +20,10 @@ class DeviseCreateUsers < ActiveRecord::Migration
     # add_index :users, :confirmation_token,   :unique => true
     # add_index :users, :unlock_token,         :unique => true
     # add_index :users, :authentication_token, :unique => true
+
+    # Create a default user
+    User.create!(:email => 'admin@leilaodeseminovos.com.br', :password => '20leilao11', :password_confirmation => '20leilao11')
+
   end
 
   def self.down

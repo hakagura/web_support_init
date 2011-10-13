@@ -22,7 +22,7 @@ development:
   username: root
   password: root
   # socket: /Applications/MAMP/tmp/mysql/mysql.sock
-  # socket: /tmp/mysql.sock
+  #socket: /tmp/mysql.sock
   socket: /var/run/mysqld/mysqld.sock
 
 test:
@@ -34,7 +34,7 @@ test:
   username: root
   password: root
   # socket: /Applications/MAMP/tmp/mysql/mysql.sock
-  # socket: /tmp/mysql.sock
+  socket: /tmp/mysql.sock
   socket: /var/run/mysqld/mysqld.sock
 
 production:
@@ -46,6 +46,6 @@ production:
   username: root
   password: root
   # socket: /Applications/MAMP/tmp/mysql/mysql.sock
-  # socket: /tmp/mysql.sock
+  #socket: /tmp/mysql.sock
   socket: /var/run/mysqld/mysqld.sock
 
