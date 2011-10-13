@@ -1,0 +1,30 @@
+<div class="page-header">
+  <h1>Usuários</h1>
+</div>
+
+
+<%= link_to 'Novo usuário', new_user_path, :class => 'btn primary' %>
+
+<table class="zebra-striped">
+  <tr>
+    <th width="15">ID</th>
+    <th>Nome</th>
+    <th>E-mail</th>
+    <th>Permissão</th>
+    <th width="205">Opções</th>
+  </tr>
+
+<% @users.each do |user| %>
+  <tr>
+    <td><%= user.id %></td>
+    <td nowarp="nowarp"><%= user.name %></td>
+    <td><%= user.email %></td>
+    <td style="text-align:center !important"><span class="Open"><%= user.role %></span></td>
+    <td>
+      <%= link_to 'Exibir', user, :class => 'btn' %>
+      <%= link_to 'Editar', edit_user_path(user), :class => 'btn' %>
+      <%= link_to 'Excluir', user, :confirm => 'Tem certeza?', :method => :delete, :class => 'btn danger' %>
+    </td>
+  </tr>
+<% end %>
+</table>

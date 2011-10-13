@@ -1,5 +1,6 @@
 SupportSystem::Application.routes.draw do
-  resources :messages
+  root :to => "tickets#index"
+  
 
   devise_for :users, :path_names => { :sign_up => "mineiros" }
 
@@ -12,7 +13,9 @@ SupportSystem::Application.routes.draw do
     resources :messages
   end
 
-  root :to => "tickets#index"
+  resources :messages
+  resources :users
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

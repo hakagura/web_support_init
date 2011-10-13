@@ -37,15 +37,14 @@
     <legend>Detalhes do Ticket:</legend>
 
     <div class="clearfix">
-      <div class="inout"><%= f.cktext_area :description, :toolbar => 'Easy', :width => 800, :height => 400 %></div>
-      
+      <div class="inout"><%= f.cktext_area :description, :toolbar => 'Easy', :width => 980, :height => 300 %></div>
     </div>
 
 
   </fieldset>
   <div class="actions">
-    <%= f.submit 'Salvar', :class => 'btn primary' %>
-    <%= link_to 'Voltar', tickets_path, :class => 'btn info' %>
+    <%= f.submit :class => 'btn primary large' %>
+    <%= link_to 'Cancelar', tickets_path, :class => 'btn large' %>
   </div>
 </div>
 
