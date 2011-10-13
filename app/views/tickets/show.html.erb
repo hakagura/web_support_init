@@ -18,16 +18,20 @@
 <div class="row">
     <div class="span4 columns">
       <h2>Ticket #<%= @ticket.id %> <small class="<%= @ticket.status %>"><%= transl @ticket.status %></small></h2>
-	  <div class="priority <%= @ticket.priority %>">Prioridade é <%= @ticket.priority %></div>
+	  <div class="priority <%= @ticket.priority %>">
+    Prioridade é <%= @ticket.priority %>
+    Cronômetro: <%= (((Time.now - @ticket.created_at)/60)/60).to_i %>hrs
+    </div>
       <p>
       <strong>Image:</strong>
       <%= link_to(image_tag(@ticket.image.url(:thumb)),@ticket.image.url(:large),:class => "top_up") unless @ticket.image.nil? %>
       </p>
     </div>
-
+  
 	<div class="span12 columns">
 	      <h4>Última atualização:</h4>
-		  <%=l @ticket.updated_at %>
+	   	  <%=l @ticket.updated_at %>
+
     </div>
 
   <div class="span12 columns ticket-description">
@@ -37,6 +41,7 @@
         <%= render @ticket.messages %><br />
 
 </div>
+
 <% unless @ticket.status == "Closed" %>
   <%= form_for([@ticket, @ticket.messages.build]) do |f| %>
           <div "clearfix">
