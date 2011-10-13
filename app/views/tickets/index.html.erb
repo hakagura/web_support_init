@@ -46,7 +46,7 @@
               <%= link_to 'Editar', edit_ticket_path(ticket), :class => 'btn info' %>
               <%= link_to 'Apagar', ticket, :confirm => 'Você tem certeza?', :method => :delete, :class => 'btn danger' %>
             </td>
-            <td id="ticket_times_<%=ticket.id%>" time="<%= (Time.now.utc - ticket.created_at).to_i%>">ttt</td>
+            <td id="ticket_times_<%=ticket.id%>" time="<%= (Time.now.utc - ticket.created_at).to_i%>"></td>
           </tr>
         <% end %>
       </table>
