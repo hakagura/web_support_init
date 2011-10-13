@@ -86,6 +86,7 @@ task :create_images do
 end
 
 after 'deploy:update_code', 'deploy:symlink_dbyaml'
+after "deploy", "deploy:seed"
 after "deploy", "deploy:cleanup"
 after 'deploy:setup', 'create_database_config'
 
