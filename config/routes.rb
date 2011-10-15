@@ -1,9 +1,7 @@
 SupportSystem::Application.routes.draw do
   root :to => "tickets#index"
-  
-
-  devise_for :users
-  # devise_for :users, :path_names => { :sign_up => "mineiros" }
+  match "/users/sign_up" => "tickets#index"
+  devise_for :users#, :path_names => { :sign_up => "/" }
 
   devise_scope :user do
     get '/login' => 'devise/sessions#new'
@@ -14,7 +12,7 @@ SupportSystem::Application.routes.draw do
     resources :messages
   end
 
-  resources :users, :controller => :users
+  resources :user, :controller => :user
   resources :messages
   
   # The priority is based upon order of creation:

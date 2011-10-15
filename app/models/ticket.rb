@@ -2,6 +2,7 @@ class Ticket < ActiveRecord::Base
 	before_save :slugando, :set_status
 	has_many :messages, :dependent => :destroy
 	belongs_to :user
+	belongs_to :developer, :class_name => "User", :foreign_key => "developer_id"
 	validates_presence_of :summary, :description, :priority
 	validates_uniqueness_of :summary
   	mount_uploader :image, ImageUploader

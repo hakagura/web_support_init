@@ -1,20 +1,7 @@
-<% if flash[:alert] %>
-	<div class="span12 columns">
-      <div class="alert-message warning">
-        <p><%= flash[:alert] %></p>
-     </div>
-	<% end %>
-	<% if flash[:notice] %>
-	<div class="span12 columns">
-      <div class="alert-message success">
-        <p><%= flash[:notice] %></p>
-     </div>
-<% end %>
-
 <div class="page-header">
   <h1><%= @ticket.summary %> <small>aberto por <strong><%= @ticket.user.email %> <strong><%= l @ticket.created_at %></strong></small></h1>
 </div>
-
+<%=@ticket.developer.email if @ticket.developer.present?%>
 <div class="row">
     <div class="span4 columns">
       <h2>Ticket #<%= @ticket.id %> <small class="<%= @ticket.status %>"><%= transl @ticket.status %></small></h2>

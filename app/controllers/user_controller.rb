@@ -1,7 +1,7 @@
 # encoding: utf-8
-class UsersController < ApplicationController
-  # before_filter :authenticate_user!
-  # load_and_authorize_resource
+class UserController < ApplicationController
+  before_filter :authenticate_user!
+  load_and_authorize_resource
   
   @@page = 'Users'
     
@@ -67,6 +67,8 @@ class UsersController < ApplicationController
   # PUT /users/1.xml
   def update
     @user = User.find(params[:id])
+    params[:user].delete(:password) if params[:user][:password].blank?
+    params[:user].delete(:password_confirmation) if params[:user][:password].blank? and params[:user][:password_confirmation].blank?
 
     respond_to do |format|
       if @user.update_attributes(params[:user])
@@ -86,7 +88,7 @@ class UsersController < ApplicationController
     @user.destroy
 
     respond_to do |format|
-      format.html { redirect_to(users_url) }
+      format.html { redirect_to(user_index_path) }
       format.xml  { head :ok }
     end
   end
