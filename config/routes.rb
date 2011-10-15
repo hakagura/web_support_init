@@ -1,6 +1,11 @@
 SupportSystem::Application.routes.draw do
   root :to => "tickets#index"
   
+  get '/users/sign_in' => redirect('/login')
+  get '/users/sign_out' => redirect('/logout')
+  get '/users/edit' => redirect('/perfil')
+
+  resources :users, :controller => :users
 
   devise_for :users
   # devise_for :users, :path_names => { :sign_up => "mineiros" }
@@ -8,13 +13,13 @@ SupportSystem::Application.routes.draw do
   devise_scope :user do
     get '/login' => 'devise/sessions#new'
     get '/logout' => 'devise/sessions#destroy'
+    get '/perfil' => "devise/registrations#edit"
   end
   
   resources :tickets do
     resources :messages
   end
 
-  resources :users, :controller => :users
   resources :messages
   
   # The priority is based upon order of creation:

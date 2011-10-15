@@ -17,7 +17,7 @@
 				<li<%=h (@current_page == "Tickets") ? ' class=active' : '' %>><%= link_to 'Tickets', tickets_path %></li>
 				<% if current_user.role == 'admin' %>
 				<li<%=h (@current_page == "Users") ? ' class=active' : '' %>><%= link_to 'Usuários', users_path %></li>
-				<li><%= link_to "Logado: #{current_user.email} | Editar perfil", "/users/edit" %></li>
+				<li><%= link_to "Logado: #{current_user.email} | Editar perfil", "/perfil" %></li>
 				<% end -%>
 				
 				<li><%= link_to 'Sair', logout_url %></li>

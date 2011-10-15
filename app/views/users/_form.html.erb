@@ -24,7 +24,9 @@
     <%= f.email_field :email %>
     </div>
   </div>
-  
+
+<% if 1== 2 -%>  
+
   <div class="clearfix">
     <%= f.label :password, "Senha" %>
     <div class="input">
@@ -38,6 +40,9 @@
     <%= f.password_field :password_confirmation %>
     </div>
   </div>
+
+<% end -%>
+
 
   <div class="clearfix">
     <%= f.label :role, "Permissão" %>
