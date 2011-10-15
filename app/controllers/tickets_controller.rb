@@ -1,15 +1,20 @@
+# encoding: utf-8
 class TicketsController < ApplicationController
   before_filter :authenticate_user!
   load_and_authorize_resource
+  @@page = 'Tickets'
+
   def index
+    @current_page = @@page
     @tickets = Ticket.all
-    @tickets_id = Ticket.all.map(&:id).join(',')
+    @tickets_id = @tickets.map(&:id).join(',')
     respond_to do |format|
       format.html # index.html.erb
     end
   end
 
   def show
+    @current_page = @@page
     @ticket = Ticket.find(params[:id])
 
     respond_to do |format|
@@ -18,6 +23,7 @@ class TicketsController < ApplicationController
   end
 
   def new
+    @current_page = @@page
     @ticket = Ticket.new
 
     respond_to do |format|
@@ -26,6 +32,7 @@ class TicketsController < ApplicationController
   end
 
   def edit
+    @current_page = @@page
     @ticket = Ticket.find(params[:id])
   end
 
@@ -35,7 +42,7 @@ class TicketsController < ApplicationController
 
     respond_to do |format|
       if @ticket.save
-        format.html { redirect_to(@ticket, :notice => 'Ticket criado com sucesso.') }
+        format.html { redirect_to(@ticket, :notice => 'Ticket criado com sucesso!') }
       else
         format.html { render :action => "new" }
       end
@@ -47,7 +54,7 @@ class TicketsController < ApplicationController
 
     respond_to do |format|
       if @ticket.update_attributes(params[:ticket])
-        format.html { redirect_to(@ticket, :notice => 'Ticket atualizado com sucesso.') }
+        format.html { redirect_to(@ticket, :notice => 'Ticket atualizado com sucesso!') }
       else
         format.html { render :action => "edit" }
       end

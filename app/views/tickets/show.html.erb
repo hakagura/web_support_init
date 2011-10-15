@@ -38,11 +38,13 @@
 
 </div>
 
+</div><!-- /row -->
+
 <% unless @ticket.status == "Closed" %>
   <%= form_for([@ticket, @ticket.messages.build]) do |f| %>
-          <div "clearfix">
-            <%= f.hidden_field :user_id, :value => current_user.id %>
-            <div class="input"><%= f.text_area :content,:rows => 20,:style => "width:500px !important;"%></div>
+          <%= f.hidden_field :user_id, :value => current_user.id %>
+          <div class="clearfix">
+              <div class="inout"><%= f.cktext_area :content, :toolbar => 'Full', :width => 980, :height => 300 %></div>
           </div>
           <div class="actions">
               <%= f.submit 'Adicionar', :class => 'btn large primary' %>
@@ -50,13 +52,7 @@
   <% end %>
 <%end%>
 
-</div><!-- /row -->
+<hr />
 
-<%= link_to 'Editar', edit_ticket_path(@ticket), :class => 'btn info' %>
-<%= link_to 'Voltar', tickets_path, :class => 'btn info' %>
-
-<script type="text/javascript">
-  window.onload = function(){
-      var intervalo = setInterval("document.getElementById('chat').scrollTop = 1000000;", 500);
-  }
-</script>
+<%= link_to 'Editar', edit_ticket_path(@ticket), :class => 'btn' %>
+<%= link_to 'Voltar', tickets_path, :class => 'btn' %>

@@ -1,67 +1,10 @@
-body { background-color: #fff; color: #333; }
-
-body, p, ol, ul, td {
-  font-family: verdana, arial, helvetica, sans-serif;
-  font-size:   13px;
-  line-height: 18px;
-}
-
-pre {
-  background-color: #eee;
-  padding: 10px;
-  font-size: 11px;
-}
-
-a { color: #000; }
-a:visited { color: #666; }
-a:hover { color: #fff; background-color:#000; }
-
-div.field, div.actions {
-  margin-bottom: 10px;
-}
-
-#notice {
-  color: green;
-}
-
-.field_with_errors {
-  padding: 2px;
-  background-color: red;
-  display: table;
-}
-
-#error_explanation {
-  width: 450px;
-  border: 2px solid red;
-  padding: 7px;
-  padding-bottom: 0;
-  margin-bottom: 20px;
-  background-color: #f0f0f0;
-}
-
-#error_explanation h2 {
-  text-align: left;
-  font-weight: bold;
-  padding: 5px 5px 5px 15px;
-  font-size: 12px;
-  margin: -7px;
-  margin-bottom: 0px;
-  background-color: #c00;
-  color: #fff;
-}
-
-#error_explanation ul li {
-  font-size: 12px;
-  list-style: square;
-}
-
-div.content	  {width: 940px; margin: 50px auto}
+div.content_box	  {width: 980px; margin: 60px auto}
 
 div.priority {margin-top: 5px; padding: 5px; border-top: 1px solid gray; border-bottom: 1px solid gray; font-weight: bold;}
 .Open, .Closed, .Ongoing, .Outsourced {background-color: green; padding: 5px; color: white; -moz-border-radius: 5px; text-transform: uppercase; font-weight: bold; font-size: small; float: right; margin-top: 8px;}
 .Closed {background-color: red;}
 
-span.Open, span.Closed, span.Ongoing, span.Outsourced {float: none; margin-top: 0; font-size: smaller; font-weight: normal}
+span.Open, span.Closed, span.Ongoing, span.Outsourced {float: none; margin-top: 0; font-size: smaller; font-weight: normal; border-radius:5px; -moz-border-radius:5px; -webkit-border-radius:5px; padding:3px 10px;}
 
 ul#chat {
   list-style: none;
@@ -85,3 +28,6 @@ ul#chat li .created_at {
   padding-left: 4px;
   padding-top: 2px;
 }
+
+table {margin:30px 0 !important;}
+table th{background:#f8f8f8; text-align:center !important;}

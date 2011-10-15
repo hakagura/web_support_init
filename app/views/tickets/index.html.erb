@@ -1,21 +1,6 @@
-<%= javascript_include_tag 'jquery.js' %>
-
 <div class="page-header">
   <h1>Tickets</h1>
 </div>
-
-<% if flash[:alert] %>
-  <div class="span12 columns">
-    <div class="alert-message warning">
-      <p><%= flash[:alert] %></p>
-    </div>
-  <% end %>
-  <% if flash[:notice] %>
-    <div class="span12 columns">
-      <div class="alert-message success">
-        <p><%= flash[:notice] %></p>
-      </div>
-    <% end %>
 
     <% if @tickets.empty? %>
 
@@ -23,57 +8,76 @@
       <%= link_to 'Abrir um novo Ticket', new_ticket_path, :class => "btn primary" %>
 
     <% else %>
+      
+      <%= link_to 'Novo ticket', new_ticket_path, :class => "btn primary" %>
 
       <table class="zebra-striped">
         <tr>
-          <th>Sumário</th>
-          <th>Prioridade</th>
-          <th>Assinado</th>
-          <th>Status</th>
-          <th></th>
-          <th></th>
-          <th></th>
+          <th width="90">Protocolo Nº</th>
+          <th width="300">Sumário</th>
+          <th>Situação</th>
+          <th>Previsão</th>
+          <th>Opções</th>
         </tr>
 
         <% @tickets.each do |ticket| %>
           <tr class="<%= ticket.priority %>">
-            <td><%= ticket.summary %></td>
-            <td><%= ticket.priority %></td>
-            <td><%= ticket.user.email %></td>
-            <td><span class="<%= ticket.status %>"><%=transl ticket.status %></span></td>
-            <td></td>
-            <td><%= link_to 'Ver', ticket, :class => 'btn info' %>
-              <%= link_to 'Editar', edit_ticket_path(ticket), :class => 'btn info' %>
-              <%= link_to 'Apagar', ticket, :confirm => 'Você tem certeza?', :method => :delete, :class => 'btn danger' %>
+            <th style="text-align:center !important"><%= ticket.id %></th>
+            <td>
+              <p style="border-bottom:#eee solid 1px; padding-bottom:5px; margin-bottom:5px">
+              <%= ticket.summary %>
+              </p>
+              <ul>
+                <li>Aberto por: <br><strong><%= ticket.user.email %></li></strong>
+                <li>Aberto em: <br><strong><%=l ticket.created_at %></li></strong>
+                <li>Prioridade: <strong><%= ticket.priority %></strong></li>
+                </ul>              
             </td>
-            <td id="ticket_times_<%=ticket.id%>" time="<%= (Time.now.utc - ticket.created_at).to_i%>"></td>
+            <td nowrap="nowrap" style="text-align:center !important"><span id="ticket_status_<%=ticket.id%>" class="<%= ticket.status %>"><%=transl ticket.status %></span></td>
+            <td id="ticket_times_<%=ticket.id%>" time="<%= (Time.now.utc - ticket.created_at).to_i%>" status="<%= ticket.status %>">
+              <%= time_formater((Time.now.utc - ticket.created_at).to_i) %>
+            </td>
+            <td nowrap="nowrap" >
+              <%= link_to 'Exibir', ticket, :class => 'btn' %>
+              <%= link_to 'Editar', edit_ticket_path(ticket), :class => 'btn' %>
+              <%= link_to 'Excluir', ticket, :confirm => 'Você tem certeza?', :method => :delete, :class => 'btn danger' %>
+              <div class="btn success" onclick="javascript: closeTicket(<%=ticket.id%>)">Encerrar</div>
+            </td>
           </tr>
         <% end %>
       </table>
 
       <br />
 
-      <%= link_to 'Novo ticket', new_ticket_path, :class => "btn primary" %>
     <% end %>
+
     <script>
-      var ticket_id="<%= @ticket_id%>".split(',')
+      var tickets_id = "<%= @tickets_id %>".split(',')
+
+      function closeTicket(ticket_id){
+        //Ajax fechar no rails
+        $("#ticket_times_"+ticket_id).attr("status", "Closed")
+        $("#ticket_status_"+ticket_id).html("Fechado")
+        $("#ticket_status_"+ticket_id).removeClass("Open")
+        $("#ticket_status_"+ticket_id).addClass("Closed")
+      }
 
       function date_time(){
-        for(var i in ticket_id){
-          $("#ticket_times_"+(parseInt(i+1))).html(chronometer($("#ticket_times_"+(parseInt(i+1))).attr("time")))
-          $("#ticket_times_"+(parseInt(i+1))).attr("time",parseInt($("#ticket_times_"+(parseInt(i+1))).attr("time"))+1)
+        for(var i in tickets_id){
+          if($("#ticket_times_"+tickets_id[i]).attr("status") == "Open"){
+            $("#ticket_times_"+tickets_id[i]).html(time_formater($("#ticket_times_"+tickets_id[i]).attr("time")))
+            $("#ticket_times_"+tickets_id[i]).attr("time",parseInt($("#ticket_times_"+tickets_id[i]).attr("time"))+1)
+          }
         }
       }
 
-      function chronometer(secs){
+      function time_formater(secs){
         secs=parseInt(secs);
         day = parseInt(secs/86400);
         hor = parseInt((secs-(day*86400))/3600);
         min = parseInt((secs-((day*86400)+(hor*3600)))/60);
         seg = parseInt(secs-((day*86400)+(hor*3600)+(min*60)));
         return (pad(day, 2)+"d "+pad(hor, 2)+"h "+pad(min, 2)+"m "+pad(seg, 2)+"s");
-
-
       }
 
       function pad(number, length){
@@ -83,7 +87,8 @@
         }
         return str;
       }
+
       $(document).ready(function(){
-        setInterval("date_time()",1000)
+        setInterval("date_time()", 1000)
       })
     </script>
