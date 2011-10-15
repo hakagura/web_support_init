@@ -4,6 +4,7 @@ SupportSystem::Application.routes.draw do
   get '/users/sign_in' => redirect('/login')
   get '/users/sign_out' => redirect('/logout')
   get '/users/edit' => redirect('/perfil')
+  get '/users/sign_up' => redirect('/login')
 
   resources :users, :controller => :users
 
