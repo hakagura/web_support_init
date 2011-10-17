@@ -1,11 +1,14 @@
 SupportSystem::Application.routes.draw do
   root :to => "tickets#index"
+
   match "/users/sign_up" => "tickets#index"
+
   devise_for :users
 
   devise_scope :user do
     get '/login' => 'devise/sessions#new'
     get '/logout' => 'devise/sessions#destroy'
+    get '/perfil' => "devise/registrations#edit"
   end
   
   resources :tickets do
@@ -14,6 +17,7 @@ SupportSystem::Application.routes.draw do
   end
 
   resources :user, :controller => :user
+
   resources :messages
   
   # The priority is based upon order of creation:

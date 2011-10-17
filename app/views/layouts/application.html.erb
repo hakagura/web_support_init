@@ -15,7 +15,6 @@
 			<h3><%= link_to 'Leilão Suporte | Beta version 0.2', root_url, :class => 'brand' %></h3>
 			<% if user_signed_in? %>
 			<ul class="nav">
-
 			<% if can? :read, 'Ticket' %>
 				<li><%= tab_to "Tickets", [{:controller => :tickets, :action=>:index }] %></li>
 			<%end%>
@@ -24,7 +23,6 @@
 				<li><%= tab_to "Usuários", [{:controller => :user, :action=>:index }] %></li>
 				<li><%= link_to "Logado: #{current_user.email} | Editar perfil", edit_user_path(current_user) %></li>
 			<%end%>				
-				
 				<li><%= link_to 'Sair', logout_url %></li>
 			</ul>
 			<% end -%>
