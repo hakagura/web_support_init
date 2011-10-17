@@ -2,13 +2,11 @@
 class UserController < ApplicationController
   before_filter :authenticate_user!
   load_and_authorize_resource
-  
-  @@page = 'Users'
-    
+       
   # GET /users
   # GET /users.xml
   def index
-    @current_page = @@page
+   
     @users = User.all
 
     respond_to do |format|
@@ -20,7 +18,7 @@ class UserController < ApplicationController
   # GET /users/1
   # GET /users/1.xml
   def show
-    @current_page = @@page
+   
     @user = User.find(params[:id])
 
     respond_to do |format|
@@ -32,7 +30,7 @@ class UserController < ApplicationController
   # GET /users/new
   # GET /users/new.xml
   def new
-    @current_page = @@page
+    
     @user = User.new
 
     respond_to do |format|
@@ -43,7 +41,7 @@ class UserController < ApplicationController
 
   # GET /users/1/edit
   def edit
-    @current_page = @@page
+    
     @user = User.find(params[:id])
   end
 

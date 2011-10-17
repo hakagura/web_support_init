@@ -1,7 +1,7 @@
 SupportSystem::Application.routes.draw do
   root :to => "tickets#index"
   match "/users/sign_up" => "tickets#index"
-  devise_for :users#, :path_names => { :sign_up => "/" }
+  devise_for :users
 
   devise_scope :user do
     get '/login' => 'devise/sessions#new'
@@ -9,6 +9,7 @@ SupportSystem::Application.routes.draw do
   end
   
   resources :tickets do
+    get 'encerrar', :on => :collection
     resources :messages
   end
 

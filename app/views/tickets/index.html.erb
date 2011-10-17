@@ -16,7 +16,7 @@
           <th width="90">Protocolo Nº</th>
           <th width="300">Sumário</th>
           <th>Situação</th>
-          <th>Previsão</th>
+          <th>Tempo Decorrido</th>
           <th>Opções</th>
         </tr>
 
@@ -31,17 +31,22 @@
                 <li>Aberto por: <br><strong><%= ticket.user.email %></li></strong>
                 <li>Aberto em: <br><strong><%=l ticket.created_at %></li></strong>
                 <li>Prioridade: <strong><%= ticket.priority %></strong></li>
+                <li>Desenvolvedor: <strong><%= ticket.developer.name if ticket.developer.present? %></strong></li>
                 </ul>              
             </td>
             <td nowrap="nowrap" style="text-align:center !important"><span id="ticket_status_<%=ticket.id%>" class="<%= ticket.status %>"><%=transl ticket.status %></span></td>
-            <td id="ticket_times_<%=ticket.id%>" time="<%= (Time.now.utc - ticket.created_at).to_i%>" status="<%= ticket.status %>">
+            <% if ticket.status == "Closed" %>
+            <td><%= time_formater ticket.time.to_i%></td>
+            <%else%>
+              <td id="ticket_times_<%=ticket.id%>" time="<%= (Time.now.utc - ticket.created_at).to_i%>" status="<%= ticket.status %>">
               <%= time_formater((Time.now.utc - ticket.created_at).to_i) %>
             </td>
+            <%end%>
             <td nowrap="nowrap" >
               <%= link_to 'Exibir', ticket, :class => 'btn' %>
-              <%= link_to 'Editar', edit_ticket_path(ticket), :class => 'btn' %>
-              <%= link_to 'Excluir', ticket, :confirm => 'Você tem certeza?', :method => :delete, :class => 'btn danger' %>
-              <div class="btn success" onclick="javascript: closeTicket(<%=ticket.id%>)">Encerrar</div>
+              <%= link_to 'Editar', edit_ticket_path(ticket), :class => 'btn' if ticket.status != 'Closed'%>
+              <%= link_to 'Excluir', ticket, :confirm => 'Você tem certeza?', :method => :delete, :class => 'btn danger' %>              
+              <%= link_to 'Encerrar', :controller => 'tickets', :action => 'encerrar', :id => ticket.id if ticket.status != 'Closed'%>
             </td>
           </tr>
         <% end %>

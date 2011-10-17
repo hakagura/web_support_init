@@ -3,7 +3,8 @@
 <head>
   <title>Leilão Suporte | Beta version 0.2</title>
   <%= javascript_include_tag :defaults, :ckeditor, 'jquery.js', 'fancybox/jquery.mousewheel-3.0.4.pack', 'fancybox/jquery.fancybox-1.3.4.pack' %>  
-  <%#= stylesheet_link_tag "scaffold", "http://twitter.github.com/bootstrap/assets/css/bootstrap-1.2.0.min.css", 'fancybox/jquery.fancybox-1.3.4.css' %>
+  <%= stylesheet_link_tag 'http://twitter.github.com/bootstrap/assets/css/bootstrap-1.2.0.min.css', 'fancybox/jquery.fancybox-1.3.4.css', 'scaffold.css' %>
+
   <%= csrf_meta_tag %>
 </head>
 <body>
@@ -14,11 +15,15 @@
 			<h3><%= link_to 'Leilão Suporte | Beta version 0.2', root_url, :class => 'brand' %></h3>
 			<% if user_signed_in? %>
 			<ul class="nav">
-				<li<%=h (@current_page == "Tickets") ? ' class=active' : '' %>><%= link_to 'Tickets', tickets_path %></li>
-				<% if current_user.role == 'admin' %>
-				<li<%=h (@current_page == "Users") ? ' class=active' : '' %>><%= link_to 'Usuários', user_index_path %></li>
+
+			<% if can? :read, 'Ticket' %>
+				<li><%= tab_to "Tickets", [{:controller => :tickets, :action=>:index }] %></li>
+			<%end%>
+
+			<% if can? :read, 'User' %>
+				<li><%= tab_to "Usuários", [{:controller => :user, :action=>:index }] %></li>
 				<li><%= link_to "Logado: #{current_user.email} | Editar perfil", edit_user_path(current_user) %></li>
-				<% end -%>
+			<%end%>				
 				
 				<li><%= link_to 'Sair', logout_url %></li>
 			</ul>

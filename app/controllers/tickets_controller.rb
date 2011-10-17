@@ -2,10 +2,8 @@
 class TicketsController < ApplicationController
   before_filter :authenticate_user!
   load_and_authorize_resource
-  @@page = 'Tickets'
-
+  
   def index
-    @current_page = @@page
     @tickets = Ticket.all
     @tickets_id = @tickets.map(&:id).join(',')
     respond_to do |format|
@@ -14,7 +12,6 @@ class TicketsController < ApplicationController
   end
 
   def show
-    @current_page = @@page
     @ticket = Ticket.find(params[:id])
 
     respond_to do |format|
@@ -23,7 +20,6 @@ class TicketsController < ApplicationController
   end
 
   def new
-    @current_page = @@page
     @ticket = Ticket.new
 
     respond_to do |format|
@@ -32,13 +28,13 @@ class TicketsController < ApplicationController
   end
 
   def edit
-    @current_page = @@page
     @ticket = Ticket.find(params[:id])
   end
 
   def create
     @ticket = Ticket.new(params[:ticket])
     @ticket.user = current_user
+    @ticket.status = "Open"
 
     respond_to do |format|
       if @ticket.save
@@ -68,5 +64,10 @@ class TicketsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to(tickets_url) }
     end
+  end
+
+  def encerrar
+    Ticket.find(params[:id]).toggle_lock
+    redirect_to tickets_url
   end
 end

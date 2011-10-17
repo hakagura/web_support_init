@@ -1,38 +1,26 @@
-  <% if @user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
-
-      <ul>
-      <% @user.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
   <div class="clearfix">
-    <%= f.label :name, "Nome: " %>
+    <label>Nome:</label>    
     <div class="input">
     <%= f.text_field :name %>
     </div>
   </div>
 
   <div class="clearfix">
-    <%= f.label :email, "E-mail" %>
+    <label>Email:</label>
     <div class="input">
     <%= f.email_field :email %>
     </div>
   </div>
   
   <div class="clearfix">
-    <%= f.label :password, "Senha" %>
+    <label>Senha:</label>
     <div class="input">
     <%= f.password_field :password %>
     </div>
   </div>
   
   <div class="clearfix">
-    <%= f.label :password_confirmation, "Confirme sua senha" %>
+    <label>Confirme sua senha:</label>
     <div class="input">
     <%= f.password_field :password_confirmation %>
     </div>
@@ -40,8 +28,10 @@
 
   <div class="clearfix">
     <% if can? :manage, @users %>
-    	<%= f.label :role, "Permissão" %>
+      <label>Permissão:</label>
+      <div class="input">
     	<%= f.collection_select :role, User::ROLES, :to_s, :humanize, {:include_blank => true} %>
+      </div>
     <% end %>  
   </div>
 

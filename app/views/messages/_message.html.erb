@@ -1,2 +1,2 @@
   <span class="created_at"><%= message.created_at.strftime("%H:%M") %></span>
-  <%= message.user.email %><br /><%= message.content %><br />
+  <%= message.user.name %><br /><%= message.content.html_safe %><br />

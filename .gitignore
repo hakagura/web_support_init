@@ -1,6 +1,5 @@
 .bundle
 db/*.sqlite3
-.gitignore
 config/*.yml
 config/database.yml
 log/*.log
