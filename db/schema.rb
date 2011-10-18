@@ -45,7 +45,6 @@ ActiveRecord::Schema.define(:version => 20111017193103) do
     t.string   "slug"
     t.string   "image"
     t.string   "doc"
-    t.datetime "time"
     t.integer  "developer_id"
     t.string   "time"
   end
@@ -65,10 +64,10 @@ ActiveRecord::Schema.define(:version => 20111017193103) do
     t.datetime "updated_at"
     t.string   "role"
     t.string   "name"
-    t.integer  "ticket_id"
     t.string   "phone"
     t.string   "mobile"
     t.boolean  "status"
+    t.integer  "ticket_id"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
