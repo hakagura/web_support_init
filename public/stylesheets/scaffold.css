@@ -1,20 +1,4 @@
-body { background-color: #fff; color: #333; }
-
-body, p, ol, ul, td {
-  font-family: verdana, arial, helvetica, sans-serif;
-  font-size:   13px;
-  line-height: 18px;
-}
-
-pre {
-  background-color: #eee;
-  padding: 10px;
-  font-size: 11px;
-}
-
-a { color: #000; }
-a:visited { color: #666; }
-a:hover { color: #fff; background-color:#000; }
+div.content_box	  {width: 980px; margin: 60px auto}
 
 div.field, div.actions {
   margin-bottom: 10px;
@@ -55,7 +39,7 @@ div.field, div.actions {
   list-style: square;
 }
 
-div.content	  {width: 940px; margin: 50px auto}
+div.content   {width: 940px; margin: 50px auto}
 
 div.priority {margin-top: 5px; padding: 5px; border-top: 1px solid gray; border-bottom: 1px solid gray; font-weight: bold;}
 .Open, .Closed, .Ongoing, .Outsourced {background-color: green; padding: 5px; color: white; -moz-border-radius: 5px; text-transform: uppercase; font-weight: bold; font-size: small; float: right; margin-top: 8px;}

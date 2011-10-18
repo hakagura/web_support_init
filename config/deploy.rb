@@ -35,10 +35,10 @@ namespace :deploy do
     run "ln -nfs #{shared_path}/images/system #{release_path}/public/system" 
   end
 
-  desc "Populates the Production Database"
-  task :seed do
-    run "cd #{current_path}; rake db:seed RAILS_ENV=production"
-  end
+  # desc "Populates the Production Database"
+  # task :seed do
+  #   run "cd #{current_path}; rake db:seed RAILS_ENV=production"
+  # end
 end
 
 
@@ -86,7 +86,7 @@ task :create_images do
 end
 
 after 'deploy:update_code', 'deploy:symlink_dbyaml'
-after "deploy", "deploy:seed"
+# after "deploy", "deploy:seed"
 after "deploy", "deploy:cleanup"
 after 'deploy:setup', 'create_database_config'
 

@@ -1,18 +1,25 @@
 SupportSystem::Application.routes.draw do
-  resources :messages
+  root :to => "tickets#index"
 
-  devise_for :users, :path_names => { :sign_up => "mineiros" }
+  match "/users/sign_up" => "tickets#index"
+
+  devise_for :users
 
   devise_scope :user do
     get '/login' => 'devise/sessions#new'
     get '/logout' => 'devise/sessions#destroy'
+    get '/perfil' => "devise/registrations#edit"
   end
   
   resources :tickets do
+    get 'encerrar', :on => :collection
     resources :messages
   end
 
-  root :to => "tickets#index"
+  resources :user, :controller => :user
+
+  resources :messages
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

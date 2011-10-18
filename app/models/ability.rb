@@ -9,7 +9,7 @@ class Ability
        if user.role == "admin"
          can :manage, :all
        else
-         can :read, Ticket
+         can :manage, Ticket
          can :create, Message
        end
     #

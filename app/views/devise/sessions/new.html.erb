@@ -12,10 +12,7 @@
 <div class="topbar">
 	<div class="fill">
 		<div class="container">
-			<h3><%= link_to 'Support System beta 0.1', root_url, :class => 'brand' %></h3>
-			<ul class="nav">
-				<li class="active"><%= link_to 'Ticket', tickets_path %></li>
-			</ul>
+			<h3><%= link_to 'Leilão Suporte | Beta version 0.2', root_url, :class => 'brand' %></h3>
 			<%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :class => 'pull-right') do |f| %>
 	  			<%= f.email_field :email, :class => 'input-small', :style => "width:160px;", :placeholder => 'exemplo@exemplo.com.br' %>
 	 			<%= f.password_field :password, :class => 'input-small', :placeholder => '******' %>

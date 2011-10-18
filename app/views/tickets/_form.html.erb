@@ -1,12 +1,5 @@
 <%= form_for(@ticket, :html => {:multipart => true} ) do |f| %>
 
-  <% if flash[:alert] %>
-    <p class="flash-error"><%= flash[:alert] %></p>
-  <% end %>
-  <% if flash[:notice] %>
-    <p class="flash-notice"><%= flash[:notice] %></p>
-  <% end %>
-
   <fieldset>
     <legend>Abrindo um Ticket</legend>
 
@@ -20,13 +13,13 @@
       <div class="input"><%= f.select :priority, options_for_select(["Selecione prioridade", "0", "1", "2", "3"],:disabled => ["Selecione prioridade"]) %></div>
     </div>
 
-
     <div class="clearfix">
       <label for="fileInput">Imagem:</label>
       <div class="input">
         <%= f.file_field :image%>
       </div>
     </div>
+
     <div class="clearfix">
       <label for="fileInput">Documento:</label>
       <div class="input">
@@ -34,41 +27,37 @@
       </div>
     </div>
 
+
   </fieldset>
 
   <fieldset>
     <legend>Detalhes do Ticket:</legend>
 
     <div class="clearfix">
-      <div class="inout"><%= f.cktext_area :description, :toolbar => 'Easy', :width => 800, :height => 400 %></div>
-
+      <div class="inout"><%= f.cktext_area :description, :toolbar => 'Easy', :width => 980, :height => 300 %></div>
     </div>
-
-
   </fieldset>
   <%if current_user.role == "admin" %>
     <fieldset>
       <div class="clearfix">
-        <label>Status:</label>
-        <div class="input"><%= f.select :status, options_for_select(["Selecione", "Open", "Closed", "Ongoing"],:disabled => ["Select One"]) %></div>
+        <label>Status</label>
+        <div class="input"><%= f.select :status, options_for_select([["Aberto","Open"], ["Em andamento","Ongoing"], ["Fechado","Closed"], ["Aguardando","Outsourced"]],:disabled => ["Selecione"]) %></div>
       </div>
+
       <div class="clearfix">
-        <label>Time:</label>
-        <div class="input"><%= f.datetime_select :time %></div>
-      </div>
-      <div class="clearfix">
-        <label for="fileinput">Desenvolvedor:</label>
+        <label for="fileInput">Desenvolvedor:</label>
         <div class="input">
-          <%= f.collection_select :developer_id,User.all,:id,:email,{:include_blank => true}%>
+          <%= f.collection_select :developer_id, users_admins, :id, :name, {:include_blank => "Selecione"} %>
         </div>
       </div>
 
     </fieldset>
   <%end%>
+
   <div class="actions">
-    <%= f.submit 'Salvar', :class => 'btn primary' %>
-    <%= link_to 'Voltar', tickets_path, :class => 'btn info' %>
+    <%= f.submit :class => 'btn primary large' %>
+    <%= link_to 'Cancelar', tickets_path, :class => 'btn large' %>
   </div>
-</iv>
+  </iv>
 
 <% end %>
