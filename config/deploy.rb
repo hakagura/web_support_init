@@ -40,15 +40,15 @@ namespace :deploy do
     run "cd #{current_path} && bundle exec rake db:seed RAILS_ENV=production"
   end
 
+end
+
+namespace :database do
   desc "Destroys Production Database"
   task :drop do
     puts "\n\n=== Destroying the Production Database! ===\n\n"
     run "cd #{current_path} && bundle exec rake db:drop RAILS_ENV=production"
   end
-
 end
-
-
 
 namespace :unicorn do
   task :start, :roles => :app, :except => { :no_release => true} do
@@ -83,7 +83,7 @@ production:
   username: rt_suport
   password: nPV5VjJZybtKq7Hr
   host: localhost
-EOF
+  EOF
   run "mkdir -p #{shared_path}/config"
   put configs, "#{shared_path}/config/database.yml"
 end
