@@ -28,23 +28,23 @@
     <h4>Acompanhamento:</h4>
     <%= render @ticket.messages %><br />
 
+    <% unless @ticket.status == "Closed" %>
+      <%= form_for([@ticket, @ticket.messages.build]) do |f| %>
+        <%= f.hidden_field :user_id, :value => current_user.id %>
+        <div class="clearfix">
+          <div class="input"><%= f.text_area :content,:rows => 20,:style => "width:500px !important;"%></div>
+        </div>
+        <div class="actions">
+          <%= f.submit 'Adicionar', :class => 'btn large primary' %>
+        </div>
+      <% end %>
+    <%end%>
+
+    <hr />
   </div>
 
 </div><!-- /row -->
 
-<% unless @ticket.status == "Closed" %>
-  <%= form_for([@ticket, @ticket.messages.build]) do |f| %>
-    <%= f.hidden_field :user_id, :value => current_user.id %>
-    <div class="clearfix">
-      <div class="input"><%= f.text_area :content,:rows => 20,:style => "width:500px !important;"%></div>
-    </div>
-    <div class="actions">
-      <%= f.submit 'Adicionar', :class => 'btn large primary' %>
-    </div>
-  <% end %>
-<%end%>
-
-<hr />
 
 <%= link_to 'Editar', edit_ticket_path(@ticket), :class => 'btn' %>
 <%= link_to 'Voltar', tickets_path, :class => 'btn' %>
