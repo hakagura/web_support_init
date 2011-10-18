@@ -13,7 +13,6 @@
       </p>
     </div>
     <strong>Documento:</strong>
-    <p/>
     <div>
       <%= link_to "Download",@ticket.doc_url unless @ticket.doc.nil? %>
     </div>
@@ -38,7 +37,8 @@
   <%= form_for([@ticket, @ticket.messages.build]) do |f| %>
     <%= f.hidden_field :user_id, :value => current_user.id %>
     <div class="clearfix">
-      <div class="input"><%= f.text_area :content,:rows => 20,:style => "width:500px !important;"%></div>
+      <div class="input"><%= f.text_area :content,:rows => 20,:style => "width:500px !important;"%>
+      </div>
     </div>
     <div class="actions">
       <%= f.submit 'Adicionar', :class => 'btn large primary' %>
