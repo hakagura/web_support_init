@@ -20,14 +20,17 @@
       <div class="input"><%= f.select :priority, options_for_select(["Selecione prioridade", "0", "1", "2", "3"],:disabled => ["Selecione prioridade"]) %></div>
     </div>
 
-    <!-- <div class="clearfix">
-      <label>Status</label>
-      <div class="input"><%#= f.select :status, options_for_select(["Select One", "Open", "Ongoing", "Closed", "Outsourced"],:disabled => ["Select One"]) %></div>
-    </div>-->
+
     <div class="clearfix">
       <label for="fileInput">Imagem:</label>
       <div class="input">
         <%= f.file_field :image%>
+      </div>
+    </div>
+    <div class="clearfix">
+      <label for="fileInput">Documento:</label>
+      <div class="input">
+        <%= f.file_field :doc%>
       </div>
     </div>
 
@@ -38,15 +41,34 @@
 
     <div class="clearfix">
       <div class="inout"><%= f.cktext_area :description, :toolbar => 'Easy', :width => 800, :height => 400 %></div>
-      
+
     </div>
 
 
   </fieldset>
+  <%if current_user.role == "admin" %>
+    <fieldset>
+      <div class="clearfix">
+        <label>Status:</label>
+        <div class="input"><%= f.select :status, options_for_select(["Selecione", "Open", "Closed", "Ongoing"],:disabled => ["Select One"]) %></div>
+      </div>
+      <div class="clearfix">
+        <label>Time:</label>
+        <div class="input"><%= f.datetime_select :time %></div>
+      </div>
+      <div class="clearfix">
+        <label for="fileinput">Desenvolvedor:</label>
+        <div class="input">
+          <%= f.collection_select :developer_id,User.all,:id,:email,{:include_blank => true}%>
+        </div>
+      </div>
+
+    </fieldset>
+  <%end%>
   <div class="actions">
     <%= f.submit 'Salvar', :class => 'btn primary' %>
     <%= link_to 'Voltar', tickets_path, :class => 'btn info' %>
   </div>
-</div>
+</iv>
 
 <% end %>
