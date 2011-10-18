@@ -11,11 +11,9 @@
       <strong>Imagem:</strong>
       <%= link_to(image_tag(@ticket.image.url(:thumb)),@ticket.image.url(:large),:class => "group") if @ticket.image.present? %>
       </p>
-    </div>
     <strong>Documento:</strong>
-    <p/>
     <div>
-      <%= link_to "Download",@ticket.doc_url unless @ticket.doc.nil? %>
+      <%= link_to "Download",@ticket.doc_url if @ticket.doc.present? %>
     </div>
   </div>
 
