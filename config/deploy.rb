@@ -37,7 +37,7 @@ namespace :deploy do
 
   desc "Populates the Production Database"
   task :seed do
-    run "cd #{current_path}; rake db:seed RAILS_ENV=production"
+    run "cd #{current_path} && bundle exec rake db:seed RAILS_ENV=production"
   end
 end
 
