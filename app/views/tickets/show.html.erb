@@ -24,7 +24,7 @@
 
   <div class="span12 columns ticket-description">
     <h4>Descrição do ticket:</h4>
-    <p><%= @ticket.description.html_safe %></p>
+    <%= @ticket.description.html_safe %>
     <h4>Acompanhamento:</h4>
     <%= render @ticket.messages %><br />
 
