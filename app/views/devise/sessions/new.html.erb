@@ -16,7 +16,7 @@
 			<%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :class => 'pull-right') do |f| %>
 	  			<%= f.email_field :email, :class => 'input-small', :style => "width:160px;", :placeholder => 'exemplo@exemplo.com.br' %>
 	 			<%= f.password_field :password, :class => 'input-small', :placeholder => '******' %>
-	  			<%= f.submit 'Entrar', :class => 'btn small info' %>
+	  			<%= f.submit 'Entrar' %>
 			<% end %>	
 		</div>
 	</div>

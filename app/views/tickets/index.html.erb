@@ -46,7 +46,7 @@
               <%= link_to 'Exibir', ticket, :class => 'btn' %>
               <%= link_to 'Editar', edit_ticket_path(ticket), :class => 'btn' if ticket.status != 'Closed'%>
               <%= link_to 'Excluir', ticket, :confirm => 'Você tem certeza?', :method => :delete, :class => 'btn danger' %>              
-              <%= link_to 'Encerrar', :controller => 'tickets', :action => 'encerrar', :id => ticket.id if ticket.status != 'Closed'%>
+              <%= link_to 'Encerrar', {:controller => 'tickets',:action => 'encerrar',:id => ticket.id},:class => 'btn success' if ticket.status != 'Closed'%>
             </td>
           </tr>
         <% end %>
