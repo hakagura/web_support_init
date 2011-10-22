@@ -13,6 +13,7 @@ gem 'mini_magick'
 gem 'mysql2', '< 0.3' #bando de dados
 gem 'rack'
 gem 'thin'
+gem 'nested_form'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 

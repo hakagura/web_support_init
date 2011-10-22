@@ -1,4 +1,4 @@
-<%= form_for(@ticket, :html => {:multipart => true} ) do |f| %>
+<%= nested_form_for(@ticket, :html => {:multipart => true} ) do |f| %>
 
   <fieldset>
     <legend>Abrindo um Ticket</legend>
@@ -53,6 +53,19 @@
 
     </fieldset>
   <%end%>
+
+    <%= f.fields_for :documents do |documento| %>
+      <% if documento.object.new_record? %>
+        <label for="fileInput">Documento:</label>
+        <div class="input">
+        <%= documento.file_field :doc%>
+        </div>
+      <%else%>
+        <%= documento.hidden_field :_destroy %>
+        <%= documento.link_to_remove "Remover" %>
+      <%end%>
+    <%end%>
+    <%= f.link_to_add "Add Doc", :documents %>
 
   <div class="actions">
     <%= f.submit :class => 'btn primary large' %>

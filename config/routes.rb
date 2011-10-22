@@ -1,4 +1,6 @@
 SupportSystem::Application.routes.draw do
+  resources :documents
+
   root :to => "tickets#index"
 
   match "/users/sign_up" => "tickets#index"

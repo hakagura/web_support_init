@@ -21,7 +21,7 @@ class TicketsController < ApplicationController
 
   def new
     @ticket = Ticket.new
-
+    @ticket.documents.build
     respond_to do |format|
       format.html # new.html.erb
     end
