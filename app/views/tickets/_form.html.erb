@@ -61,8 +61,16 @@
         <%= documento.file_field :doc%>
         </div>
       <%else%>
+       <div class="clearfix">
+      <label for="fileInput">Documentos:</label>
+      <div class="input">
         <%= documento.hidden_field :_destroy %>
-        <%= documento.link_to_remove "Remover" %>
+        <%= File.basename(documento.object.doc_url)%>
+        <%= documento.link_to_remove "Remover" %><br />
+
+      </div>
+    </div>
+
       <%end%>
     <%end%>
     <%= f.link_to_add "Add Doc", :documents %>
