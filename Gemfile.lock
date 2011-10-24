@@ -133,7 +133,6 @@ DEPENDENCIES
   nested_form
   rack
   rails (= 3.0.9)
-  rake (= 0.8.7)
   sqlite3
   thin
   unicorn
