@@ -7,7 +7,7 @@ class Ticket < ActiveRecord::Base
 	validates_uniqueness_of :summary
     belongs_to :developer,:class_name => "User",:foreign_key => "developer_id"
     mount_uploader :image, ImageUploader
-    mount_uploader :doc, ImageUploader
+    #mount_uploader :doc, ImageUploader
     has_many :documents
     accepts_nested_attributes_for :documents, :allow_destroy => true
 
