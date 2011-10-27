@@ -1,4 +1,4 @@
-div.content_box	  {width: 980px; margin: 60px auto}
+div.content_box	  {margin: 60px 20px}
 
 div.field, div.actions {
   margin-bottom: 10px;
@@ -39,7 +39,10 @@ div.field, div.actions {
   list-style: square;
 }
 
-div.content   {width: 940px; margin: 50px auto}
+
+
+
+div.content   {margin: 50px auto}
 
 div.priority {margin-top: 5px; padding: 5px; border-top: 1px solid gray; border-bottom: 1px solid gray; font-weight: bold;}
 .Open, .Closed, .Ongoing, .Outsourced {background-color: green; padding: 5px; color: white; -moz-border-radius: 5px; text-transform: uppercase; font-weight: bold; font-size: small; float: right; margin-top: 8px;}
@@ -69,4 +72,15 @@ ul#chat li .created_at {
   font-size: 11px;
   padding-left: 4px;
   padding-top: 2px;
+}
+
+.container {width:100%;}
+.topbar h3{float:left; margin-left:20px;}
+.topbar div > ul, .nav {float:right;}
+h1 small {color:#999; margin-left:10px; border-left:#bbb solid 1px; padding-left:10px;}
+#user_new {float:right; margin-right:20px;}
+.center {text-align:center !important;}
+
+.topbar ul li a.active {
+ background-color: rgba(0, 0, 0, 0.5);
 }

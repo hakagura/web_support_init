@@ -17,7 +17,7 @@
           <th width="300">Sumário</th>
           <th>Situação</th>
           <th>Tempo Decorrido</th>
-          <th>Opções</th>
+          <th class="center">Opções</th>
         </tr>
 
         <% @tickets.each do |ticket| %>
@@ -42,7 +42,7 @@
               <%= time_formater((Time.now.utc - ticket.created_at).to_i) %>
             </td>
             <%end%>
-            <td nowrap="nowrap" >
+            <td nowrap="nowrap" width="300">
               <%= link_to 'Exibir', ticket, :class => 'btn' %>
               <%= link_to 'Editar', edit_ticket_path(ticket), :class => 'btn' if ticket.status != 'Closed'%>
               <%= link_to 'Excluir', ticket, :confirm => 'Você tem certeza?', :method => :delete, :class => 'btn danger' %>              

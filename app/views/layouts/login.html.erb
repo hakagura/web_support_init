@@ -14,9 +14,9 @@
 		<div class="container">
 			<h3><%= link_to 'Leilão Suporte | Beta version 0.2', root_url, :class => 'brand' %></h3>
 			<%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => 'pull-right'}) do |f| %>
-	  			<%= f.email_field :email, :class => 'input-small', :style => "width:160px;", :placeholder => 'exemplo@exemplo.com.br' %>
-	 			<%= f.password_field :password, :class => 'input-small', :placeholder => '******' %>
-	  			<%= f.submit 'Entrar' %>
+	  			<%= f.email_field :email, :class => 'input-small', :style => "width:160px;", :placeholder => 'e-mail' %>
+	 			<%= f.password_field :password, :class => 'input-small', :placeholder => 'senha' %>
+	  			<button type="submit" class="btn">Entrar</button>
 			<% end %>	
 		</div>
 	</div>

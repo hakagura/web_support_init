@@ -1,7 +1,7 @@
 <div class="page-header">
 	<h1>Usuário <small>Criar um novo usário</small></h1>
 </div>
-<%= form_for @user, :url => user_path(@user) do |f| %>
+<%= form_for @user, :url => user_index_path do |f| %>
   <%= render :partial => 'form', :locals => { :f => f } %>
 <%end%>
 <hr />
