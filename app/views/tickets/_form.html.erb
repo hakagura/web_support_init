@@ -10,7 +10,12 @@
 
     <div class="clearfix">
       <label>Prioridade</label>
-      <div class="input"><%= f.select :priority, options_for_select(["Selecione prioridade", "0", "1", "2", "3"],:disabled => ["Selecione prioridade"]) %></div>
+      <div class="input">
+        <%= f.radio_button :priority, "0" %>0
+        <%= f.radio_button :priority, "1" %>1
+        <%= f.radio_button :priority, "2" %>2
+        <%= f.radio_button :priority, "3" %>3
+      </div>
     </div>
 
     <div class="clearfix">
