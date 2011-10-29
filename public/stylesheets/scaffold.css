@@ -84,3 +84,5 @@ h1 small {color:#999; margin-left:10px; border-left:#bbb solid 1px; padding-left
 .topbar ul li a.active {
  background-color: rgba(0, 0, 0, 0.5);
 }
+
+.image_center { width:185px; margin:200px auto;}
