@@ -86,3 +86,10 @@ h1 small {color:#999; margin-left:10px; border-left:#bbb solid 1px; padding-left
 }
 
 .image_center { width:185px; margin:200px auto;}
+
+.topbar-inner, .topbar .fill { 
+  background-color: #222222;
+    background-image: -moz-linear-gradient(center top , #D66565, #9C3031);
+    background-repeat: repeat-x;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), 0 -1px 0 rgba(0, 0, 0, 0.1) inset;
+  }
