@@ -90,7 +90,7 @@ h1 small {color:#999; margin-left:10px; border-left:#bbb solid 1px; padding-left
 .topbar-inner, .topbar .fill { 
   background-color: #222222;
   background-image: -moz-linear-gradient(center top , #D66565, #9C3031);
-  background-image: -webkit-linear-gradient(center top, #D66565, #9C3031);
+  background-image: -webkit-linear-gradient(top, #D66565, #9C3031);
   background-repeat: repeat-x;
   -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), 0 -1px 0 rgba(0, 0, 0, 0.1) inset;
   -moz-box-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), 0 -1px 0 rgba(0, 0, 0, 0.1) inset;
