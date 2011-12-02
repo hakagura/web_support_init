@@ -13,4 +13,10 @@ class User < ActiveRecord::Base
 
   has_many :messages
   has_many :tickets
+
+  def self.emails
+    emails = User.where(:role => 'admin')
+    emails.collect(&:email).join(', ')
+  end
+
 end

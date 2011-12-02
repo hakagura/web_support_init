@@ -22,5 +22,16 @@ SupportSystem::Application.configure do
 
   # Only use best-standards-support built into browsers
   config.action_dispatch.best_standards_support = :builtin
+
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.default_url_options = { :host => 'leilaodeseminovos.com.br' }
+  config.action_mailer.smtp_settings = {
+    :address => "66.228.59.50",
+    :port => 25,
+    :domain => "leilaodeseminovos.com.br",
+    :authentication => :login,
+    :user_name => "leilao",
+    :password => "20leilao11"
+  }
 end
 

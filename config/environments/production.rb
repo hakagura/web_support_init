@@ -46,4 +46,16 @@ SupportSystem::Application.configure do
 
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
+
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.default_url_options = { :host => 'leilaodeseminovos.com.br' }
+  config.action_mailer.smtp_settings = {
+    :address => "66.228.59.50",
+    :port => 25,
+    :domain => "leilaodeseminovos.com.br",
+    :authentication => :login,
+    :user_name => "leilao",
+    :password => "20leilao11"
+  }
+
 end
