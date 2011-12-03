@@ -1,9 +1,9 @@
-require "bundler/capistrano"
+require 'bundler/capistrano'
 
-set :application, "suporte.leilaodeseminovos.com.br"
-set :user, "ubuntu"
+set :application, 'suporte.leilaodeseminovos.com.br'
+set :user, 'ubuntu'
 set :use_sudo, false
-set :repository,  "git@codebasehq.com:aceleradora/leilao/web_support.git"
+set :repository,  'git@codebasehq.com:aceleradora/leilao/web_support.git'
 set :deploy_to, "/home/#{user}/www/#{application}"
 set :deploy_via, :remote_cache
 set :scm, :git
@@ -12,11 +12,9 @@ set :git_enable_submodules, true
 set :keep_releases, 10
 set :unicorn_pid, "#{shared_path}/pids/unicorn.pid"
 
-ssh_options[:keys] = ["#{ENV['HOME']}/.ssh/amazon.pem"]
-
-role :app, "107.20.40.77"
-role :web, "107.20.40.77"
-role :db,  "107.20.40.77", :primary => true
+role :app, '173.230.136.152'
+role :web, '173.230.136.152'
+role :db,  '173.230.136.152', :primary => true
 
 namespace :deploy do
   desc "Restart Application"
