@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Leilão Suporte | Versão Beta 0.2</title>
+  <title>Leilão Suporte | Versão Beta 0.3</title>
     <%= javascript_include_tag :defaults, :ckeditor, 'jquery.js', 'fancybox/jquery.mousewheel-3.0.4.pack', 'fancybox/jquery.fancybox-1.3.4.pack' %>  
   <%= stylesheet_link_tag 'http://twitter.github.com/bootstrap/assets/css/bootstrap-1.2.0.min.css', 'fancybox/jquery.fancybox-1.3.4.css', 'scaffold.css' %>
 
@@ -12,7 +12,7 @@
 <div class="topbar">
 	<div class="fill">
 		<div class="container">
-			<h3><%= link_to 'Leilão Suporte | Versão Beta 0.2', root_url, :class => 'brand' %></h3>
+			<h3><%= link_to 'Leilão Suporte | Versão Beta 0.3', root_url, :class => 'brand' %></h3>
 			<%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => 'pull-right'}) do |f| %>
 	  			<%= f.email_field :email, :class => 'input-small', :style => "width:160px;", :placeholder => 'e-mail' %>
 	 			<%= f.password_field :password, :class => 'input-small', :placeholder => 'senha' %>
