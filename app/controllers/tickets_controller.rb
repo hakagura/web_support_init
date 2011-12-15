@@ -4,7 +4,7 @@ class TicketsController < ApplicationController
   load_and_authorize_resource
   
   def index
-    @tickets = Ticket.all
+    @tickets = Ticket.limit(10)
     @tickets_id = @tickets.map(&:id).join(',')
     respond_to do |format|
       format.html # index.html.erb
