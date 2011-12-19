@@ -51,10 +51,10 @@
           </tr>
         <% end %>
       </table>
-
-      <br />
-
     <% end %>
+    <center>
+      <%= will_paginate @tickets %>
+    </center>
 
     <script>
       var tickets_id = "<%= @tickets_id %>".split(',')

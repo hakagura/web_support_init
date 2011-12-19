@@ -18,7 +18,7 @@ gem 'nested_form'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3'
-
+gem 'will_paginate', '~> 3.0'
 # Use unicorn as the web server
 gem 'unicorn'
 
