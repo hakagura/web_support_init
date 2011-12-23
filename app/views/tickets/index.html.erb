@@ -1,5 +1,5 @@
 <div class="page-header">
-  <h1>Tickets <small>(<%= Ticket.count if current_user.role == 'admin' %>) <%=l Ticket.last.created_at if current_user.role == 'admin' %></small></h1>
+  <h1>Tickets <small>(<%= Ticket.count if current_user.role == 'admin' %>) Primeiro Ticket <%=l Ticket.last.created_at if current_user.role == 'admin' %></small></h1>
 </div>
 
     <% if @tickets.empty? %>
