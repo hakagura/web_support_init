@@ -11,7 +11,7 @@ class Ticket < ActiveRecord::Base
     has_many :documents
     accepts_nested_attributes_for :documents, :allow_destroy => true
 
-    default_scope :order => 'created_at DESC'
+    #default_scope :order => 'created_at DESC'
 
 	#def to_param
 	#	slug
