@@ -8,6 +8,7 @@ gem 'rails', '3.0.9'
 gem 'cancan'
 gem 'jquery-rails', '>= 1.0.12'
 gem 'ckeditor'
+gem 'abstract'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'mysql2', '< 0.3' #bando de dados
