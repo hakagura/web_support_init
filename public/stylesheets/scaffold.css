@@ -96,3 +96,16 @@ h1 small {color:#999; margin-left:10px; border-left:#bbb solid 1px; padding-left
   -moz-box-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), 0 -1px 0 rgba(0, 0, 0, 0.1) inset;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), 0 -1px 0 rgba(0, 0, 0, 0.1) inset;
 }
+
+#drawer {
+  overflow:visible;
+  position:fixed;
+  left:0;
+  top:50px;
+  width: 100%;
+}
+
+
+.page-header {
+  margin-top: 90px;
+}
