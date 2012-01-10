@@ -122,6 +122,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  abstract
   cancan
   capistrano
   carrierwave
