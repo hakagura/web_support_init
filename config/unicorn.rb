@@ -1,4 +1,4 @@
-worker_processes 8
+worker_processes 2
 
 working_directory "/home/ubuntu/www/suporte.leilaodeseminovos.com.br/current"
 
